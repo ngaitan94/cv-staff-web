@@ -1,0 +1,181 @@
+.main-wrapper {
+    width: 100%;
+    max-width: var(--main-wrapper-xlarge);
+    margin: 0 auto;
+    padding: 0 1em;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.flex-center {
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-end {
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.flex-start {
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.flex-justify-start {
+    justify-content: flex-start;
+}
+
+.flex-justify-end {
+    justify-content: flex-end;
+}
+
+.flex-justify-between {
+    justify-content: space-between;
+}
+
+.flex-justify-around {
+    justify-content: space-around;
+}
+
+.flex-justify-center {
+    justify-content: center;
+}
+
+.flex-align-start {
+    align-items: flex-start;
+}
+
+.flex-align-end {
+    align-items: flex-end;
+}
+
+.flex-align-center {
+    align-items: center;
+}
+
+.flex-align-stretch {
+    align-items: stretch;
+}
+
+.flex-align-baseline {
+    align-items: baseline;
+}
+
+.gap-small {
+    gap: var(--gap-small);
+}
+
+.gap-medium {
+    gap: var(--gap-medium);
+}
+
+.gap-large {
+    gap: var(--gap-large);
+}
+
+.gap-xlarge {
+    gap: var(--gap-xlarge);
+}
+
+.w-full {
+    width: 100%;
+}
+
+.w-90 {
+    width: 90%;
+}
+
+.w-80 {
+    width: 80%;
+}
+
+.w-70 {
+    width: 70%;
+}
+
+.w-60 {
+    width: 60%;
+}
+
+.w-50 {
+    width: 50%;
+}
+
+.w-40 {
+    width: 40%;
+}
+
+.w-30 {
+    width: 30%;
+}
+
+.w-20 {
+    width: 20%;
+}
+
+.w-10 {
+    width: 10%;
+}
+
+.w-auto {
+    width: auto;
+}
+
+.h-full {
+    height: 100%;
+}
+
+.hide {
+    display: none !important;
+}
+
+.show {
+    display: block !important;
+}
+
+.no-desktop {
+    display: none !important;
+}
+
+.no-mobile {
+    display: block !important;
+}
+
+.highlight {
+    color: var(--color-primary);
+}
+
+.outline {
+    outline: 1px solid red;
+}
+
+@media only screen and (max-width: 768px) {
+    .flex-row {
+        width:100%;
+        flex-direction: column
+    }
+
+    .no-desktop {
+        display: block !important;
+    }
+
+    .no-mobile {
+        display: none !important;
+    }
+}

@@ -1,0 +1,89 @@
+---
+import "../styles/reset.css";
+import "../styles/styles.css";
+
+// Supports weights 100-900
+import '@fontsource-variable/onest';
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<title>Astro Project Boillerplate</title>
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+
+<style is:global>
+	:root {
+    --color-primary: #206BC4;
+    --color-primary-light: #d3e7ff;
+    --color-primary-dark: #103056;
+    --color-secondary: #4caf50;
+    --color-secondary-light: #b9febc;
+    --color-secondary-dark: #175119;
+    --color-background: #f2f2f2;
+
+    --color-alert: #e7b43c;
+    --color-success: #269a57;
+    --color-error: #e74c3c;
+
+    --color-dark: #000;
+    --color-light: #fff;
+    --color-dark-grey: #666;
+    --color-light-grey: #cbcbcb;
+
+    --color-text: #9f9f9f;
+    --color-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --color-overlay: rgba(0, 0, 0, .2);
+
+    --font-body: 'Onest Variable', sans-serif;
+    --font-headline: "Unbounded", sans-serif;
+    --font-monospace: "Courier New", monospace;
+
+    --font-size-base: 16px;
+    --font-size-large: 1.25rem;
+    --font-size-small: .875rem;
+
+    --border-radius: 10px;
+    --rounded: 50%;
+
+    --main-wrapper-xlarge: 1400px;
+    --main-wrapper-large: 1200px;
+    --main-wrapper-medium: 1024px;
+    --main-wrapper-small: 768px;
+
+    --gap-small: .5rem;
+    --gap-medium: 1rem;
+    --gap-large: 2rem;
+    --gap-xlarge: 3rem;
+
+    --transition: all .3s ease-in-out;
+	
+    --loader-layer: 99999;
+    --modal-layer: 9999;
+    --menu-layer: 999;
+    --deco-layer: 99;
+    --text-layer: 9;
+    --base-layer: 1;
+    --bg-layer: -1
+}
+
+html {
+    scroll-behavior: smooth
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    background-color: var(--color-background);
+    font-family: var(--font-body),sans-serif;
+    position: relative;
+    z-index: var(--base-layer);
+}
+</style>
