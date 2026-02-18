@@ -1,0 +1,26 @@
+---
+interface Props {
+    isPadding?: boolean;
+}
+
+const { isPadding } = Astro.props as Props;
+
+const padding = isPadding ? 'padding: 1rem;' : '';
+---
+
+<section class="section-card" style={padding}>
+    <div class="content">
+        <slot/>
+    </div>
+</section>
+
+<style>
+.section-card {
+    display: flex;
+    background-color: var(--color-background);
+    border-radius: 10px;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    overflow: hidden;
+    width: 100%;
+}
+</style>

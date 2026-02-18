@@ -15,14 +15,14 @@ import '@fontsource-variable/onest';
 		<title>Astro Project Boillerplate</title>
 	</head>
 	<body>
-		<slot />
+        <slot />
 	</body>
 </html>
 
 <style is:global>
 	:root {
-    --color-primary: #206BC4;
-    --color-primary-light: #d3e7ff;
+    --color-primary: #ad0000;
+    --color-primary-light: #ff9595;
     --color-primary-dark: #103056;
     --color-secondary: #4caf50;
     --color-secondary-light: #b9febc;
@@ -38,7 +38,7 @@ import '@fontsource-variable/onest';
     --color-dark-grey: #666;
     --color-light-grey: #cbcbcb;
 
-    --color-text: #9f9f9f;
+    --color-text: #222222;
     --color-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     --color-overlay: rgba(0, 0, 0, .2);
 
@@ -50,7 +50,7 @@ import '@fontsource-variable/onest';
     --font-size-large: 1.25rem;
     --font-size-small: .875rem;
 
-    --border-radius: 10px;
+    --border-radius: 15px;
     --rounded: 50%;
 
     --main-wrapper-xlarge: 1400px;
@@ -85,5 +85,26 @@ body {
     font-family: var(--font-body),sans-serif;
     position: relative;
     z-index: var(--base-layer);
+}
+
+img {
+    overflow: hidden;
+    border-radius: var(--border-radius);
+}
+
+.heading {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--color-dark);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.heading svg {
+    width: 2rem;
+    height: 2rem;
+    color: var(--color-primary);
 }
 </style>

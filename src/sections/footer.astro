@@ -1,0 +1,77 @@
+---
+
+---
+
+<footer>
+    <div class="rrss">
+        <a href="#" class="social-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="32" height="32" stroke-width="1.5">
+                <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path>
+                <path d="M8 9h1l3 3l3 -3h1"></path>
+                <path d="M8 15l2 0"></path>
+                <path d="M14 15l2 0"></path>
+                <path d="M9 9l0 6"></path>
+                <path d="M15 9l0 6"></path>
+            </svg>
+        </a>
+        <a href="#" class="social-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="32" height="32" stroke-width="1.5">
+                <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path>
+                <path d="M8 11l0 5"></path>
+                <path d="M8 8l0 .01"></path>
+                <path d="M12 16l0 -5"></path>
+                <path d="M16 16v-3a2 2 0 0 0 -4 0"></path>
+            </svg>
+        </a>
+        <a href="#" class="social-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="32" height="32" stroke-width="1.5">
+                <path d="M3 18v-12h4.5a3 3 0 0 1 0 6a3 3 0 0 1 0 6h-4.5"></path>
+                <path d="M3 12l4.5 0"></path>
+                <path d="M14 13h7a3.5 3.5 0 0 0 -7 0v2a3.5 3.5 0 0 0 6.64 1"></path>
+                <path d="M16 6l3 0"></path>
+            </svg>
+        </a>
+    </div>
+
+    <p class="copyright">
+        Hecho con ❤️ y unas cuantas líneas de código
+    </p>
+</footer>
+
+<style>
+
+.rrss {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.rrss .social-icon {
+    width: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: .5rem;
+    background-color: var(--color-light);
+    border-radius: 50%;
+    transition: var(--transition);
+}
+
+.rrss .social-icon:hover {
+    background-color: var(--color-light-grey);
+    transform: scale(1.1);
+}
+
+.rrss .social-icon svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--color-primary);
+}
+
+.copyright {
+    font-size: 0.8rem;
+    color: var(--color-text);
+    text-align: center;
+    padding: 1rem 0;
+}
+</style>

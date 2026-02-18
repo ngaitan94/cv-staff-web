@@ -1,0 +1,41 @@
+---
+
+---
+
+<div class="badget">
+    <span class="text">Disponibilidad inmediata</span>
+</div>
+
+<style>
+.badget {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--gap-small);
+    background-color: var(--color-primary);
+    border-radius: 2rem;
+    padding: .3rem .8rem;
+    font-size: .8rem;
+    color: var(--color-light);
+
+
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: var(--deco-layer);
+
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.02);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+</style>

@@ -1,0 +1,40 @@
+---
+interface Props {
+    name: string;
+    description: string;
+}
+
+const { name, description } = Astro.props as Props;
+---
+
+<h1>
+    Hola, <br>
+    soy <span>{name} 👋</span>
+</h1>
+
+<p>
+    {description}
+</p>
+
+<style>
+    h1 {
+		font-weight: 300;
+		font-size: 3rem;
+        line-height: 1;
+		color: var(--color-dark);
+        margin-bottom: 2rem;
+	}
+
+	h1 span {
+		font-weight: bold;
+		font-size: 2.5rem;
+		color: var(--color-primary);
+	}
+
+    p {
+        font-size: 1rem;
+        color: var(--color-text);
+        margin-bottom: 2rem;
+        line-height: 1.5;
+    }
+</style>

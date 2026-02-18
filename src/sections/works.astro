@@ -1,0 +1,136 @@
+---
+
+---
+
+<section class="history">
+    <h2 class="heading">
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="40"
+        height="40"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+    >
+        <path d="M3 9a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-9z" />
+        <path d="M8 7v-2a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v2" />
+    </svg>
+
+    Mi experiencia
+    </h2>
+
+    <div class="timeline">
+        <div class="event">
+            <div class="logo">
+                <img src="https://media.licdn.com/dms/image/v2/D560BAQG2ABhDKMnUdg/company-logo_100_100/company-logo_100_100/0/1702654207099/vmlyr_logo?e=1756339200&v=beta&t=4fCN_79UPOyZ-Ib4kFlI_EWo5OBMtlj8Jfj5K9iSxAI" alt="">
+            </div>
+
+            <div class="captions">
+                <h3 class="job">Digital Project Manager</h3>
+                <span class="company">VML Chile • </span>
+                <span class="date">Enero 2024 - Actualidad</span>
+            </div>
+
+            <div class="content">
+                Lidero la adopción e implementación de WPP Open, plataforma colaborativa basada en IA para gestión de proyectos, contenidos y flujos de trabajo. Coordino equipos multidisciplinarios en proyectos CRM, APP y Web para marcas como Movistar, IKEA y Reebok. Impulso la innovación mediante automatización, metodologías ágiles (Scrum/Kanban) y herramientas como SalesForce, Asana y plataformas SaaS. También gestiono QA, contenidos y tecnologías emergentes en producción digital.
+            </div>
+        </div>
+
+        <div class="event">
+            <div class="logo">
+                <img src="https://media.licdn.com/dms/image/v2/D4D03AQGZ-0Gd5Fdn0w/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1672200271240?e=1756339200&v=beta&t=SWoYiXd_DuWl0pLg4QWD5xkW9cdUxm7AKlTU7mBRzLI" alt="">
+            </div>
+
+            <div class="captions">
+                <h3 class="job">Digital Project Manager</h3>
+                <span class="company">Wunderman Thompson Chile</span>
+                <span class="date">Enero 2021 - Enero 2024</span>
+            </div>
+
+            <div class="content">
+                Responsable de la gestión integral de proyectos digitales y CRM para clientes como Derco, Movistar, IKEA y Mallplaza. Coordiné equipos creativos y técnicos, liderando campañas en plataformas como SalesForce Marketing Cloud, Eloqua y Click Dimensions. Además, diseñé piezas HTML, gestioné journeys automatizados y aseguré la calidad de entregables. Consolidé procesos productivos bajo metodologías ágiles, con foco en eficiencia y experiencia del cliente.
+            </div>
+        </div>
+
+        <div class="event">
+            <div class="logo">
+                <img src="https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/55cc16c0d09e34ad430b6eb5ca2ccd51~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=14579&refresh_token=ec06a81e&x-expires=1750809600&x-signature=bZJMHoIxCThta%2FpCqmMwvOlrgEw%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=maliva" alt="">
+            </div>
+
+            <div class="captions">
+                <h3 class="job">Chief Executive Officer</h3>
+                <span class="company">Inadaptado.cl</span>
+                <span class="date">Enero 2020 - Actualidad</span>
+            </div>
+
+            <div class="content">
+                Fundé una agencia boutique especializada en soluciones digitales a medida. Dirijo proyectos de desarrollo web (PHP, WordPress, WooCommerce), diseño UI/UX, chatbots y branding para clientes de diversas industrias. Abarco desde consultoría estratégica hasta producción creativa, combinando visión tecnológica con diseño funcional. Entre los clientes destacan clínicas, estudios de diseño, hoteles, retail y startups. Foco en innovación, versatilidad y personalización total de servicios.
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .timeline {
+        display: flex;
+        flex-direction: column;
+        gap: var(--gap-medium);
+    }
+
+    .timeline .event {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: var(--gap-medium);
+        padding: 1rem;
+        background-color: var(--color-light);
+        border-radius: var(--border-radius);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .timeline .event .logo {
+        flex-shrink: 0;
+        width: 50px;
+        height: 50px;
+        overflow: hidden;
+        border-radius: var(--border-radius);
+    }
+
+    .timeline .event .logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .timeline .event .captions {
+        width: 100%;
+    }
+
+    .timeline .event .captions .job {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--color-dark);
+        margin-bottom: 0.25rem;
+    }
+
+    .timeline .event .captions .company {
+        font-size: 1rem;
+        color: var(--color-dark-grey);
+        margin-bottom: 0.25rem;
+    }
+
+    .timeline .event .captions .date {
+        font-size: 0.875rem;
+        color: var(--color-light-grey);
+    }
+
+    .timeline .event .content {
+        font-size: 1rem;
+        color: var(--color-dark);
+        margin-top: 0.5rem;
+        text-wrap: balance;
+    }
+</style>

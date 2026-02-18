@@ -1,0 +1,109 @@
+---
+
+---
+
+<section class="history">
+    <h2 class="heading">
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="40"
+        height="40"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+    >
+        <path d="M21 10.663c0 -4.224 -4.041 -7.663 -9 -7.663s-9 3.439 -9 7.663c0 3.783 3.201 6.958 7.527 7.56c1.053 .239 .932 .644 .696 2.133c-.039 .238 -.184 .932 .777 .512c.96 -.42 5.18 -3.201 7.073 -5.48c1.304 -1.504 1.927 -3.029 1.927 -4.715v-.01z" />
+    </svg>
+        Hablemos
+    </h2>
+
+    <p class="subline"></p>
+
+    <div class="links">
+        <a class="link" href="https://inadaptado.cl">
+            <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="40"
+            height="40"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            >
+                <path d="M6 3m0 4a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-4a4 4 0 0 1 -4 -4z" />
+                <path d="M12 3v7" />
+                <path d="M6 10h12" />
+            </svg>
+            www.inadaptado.cl
+        </a>
+    
+        <a class="link" href="mailto:nicolas@inadaptado.cl">
+            <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="40"
+            height="40"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            >
+                <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" />
+                <path d="M3 7l9 6l9 -6" />
+            </svg>
+            nicolas@inadaptado.cl
+        </a>
+
+        <a class="link" href="tel:+56931165405">
+            <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="40"
+            height="40"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            >
+                <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
+            </svg>
+            (+56) 9 3116-5405
+        </a>
+    </div>
+</section>
+
+<style>
+    .links {
+        display: flex;
+        flex-direction: column;
+        gap: var(--gap-small);
+    }
+
+   .links .link {
+        width: max-content;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        text-decoration: none;
+
+        background-color: var(--color-light);
+        color: var(--color-dark);
+        padding: 0.5rem 1rem;
+        border-radius: var(--border-radius);
+        font-size: var(--font-size-small);
+        font-weight: 500;
+    }
+
+    .links .link svg {
+        width: 1.5rem;
+        height: 1.5rem;
+        color: var(--color-primary);
+    }
+</style>

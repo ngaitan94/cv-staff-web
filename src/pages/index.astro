@@ -1,11 +1,49 @@
 ---
-import HeroV1 from '../components/HeroV1.astro';
 import Layout from '../layouts/Layout.astro';
+import Hero from '../sections/hero.astro';
+import MarqueeV1 from '../components/MarqueeV1.astro';
+import History from '../sections/history.astro';
+import Skills from '../sections/skills.astro';
+import Works from '../sections/works.astro';
+import Contact from '../sections/contact.astro';
+import Footer from '../sections/footer.astro';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<HeroV1 />
+	<div class="container">
+		<Hero />
+	</div>
+
+	<MarqueeV1 text='Publicista • Desarrollador • Project Manager' bgColor='#ad0000' textColor='#fff' />
+
+	<div class="container">
+		<History />
+
+		<Skills />
+
+		<Works />
+
+		<Contact />
+	</div>
+
+	<Footer />
 </Layout>
+
+<style>
+	.container {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		background-color: var(--color-background);
+		gap: var(--gap-medium);
+		padding: 2rem 1rem;
+
+		max-width: 480px;
+		margin: 0 auto;
+
+		position: relative;
+	}
+</style>

@@ -1,0 +1,111 @@
+---
+interface Props {
+    text: string;
+    bgColor?: string;
+    textColor?: string;
+}
+const {text, bgColor = "#ffffff"} = Astro.props;
+---
+
+<section class="marquee-bar">
+    <div class="wrapper main-wrapper-xlarge">
+        <span class="text">• {text}&nbsp;</span>
+    </div>
+</section>
+
+<style>
+.marquee-bar {
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    padding: 1rem 0;
+    background: var(--color-primary);
+    background-size: 10px 100%;
+    background-repeat: no-repeat;
+}
+
+.marquee-bar::before,
+.marquee-bar::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50px; /* Ancho del área de difuminación */
+    z-index: 2;
+    background: linear-gradient(to right, var(--color-primary) 0%, rgba(245, 245, 245, 0) 100%);
+}
+
+.marquee-bar::after {
+    right: 0;
+    left: auto;
+    background: linear-gradient(to left, var(--color-primary) 0%, rgba(245, 245, 245, 0) 100%);
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.text {
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: var(--color-light);
+}
+</style>
+
+<script>
+// Top Header - Scrolling text effect
+function marqueeEffect(selector: string, speed: number): void {
+  const parentSelector = document.querySelector(selector) as HTMLElement | null;
+
+  if (!parentSelector) {
+    console.error(`No se encontró el elemento con el selector: ${selector}`);
+    return;
+  }
+
+  const clone: string = parentSelector.innerHTML;
+  const firstElement = parentSelector.children[0] as HTMLElement;
+
+  if (!firstElement) {
+    console.error("El contenedor no tiene elementos hijos para aplicar el efecto.");
+    return;
+  }
+
+  // Clonamos varias veces el contenido
+  parentSelector.insertAdjacentHTML("beforeend", clone);
+  parentSelector.insertAdjacentHTML("beforeend", clone);
+  parentSelector.insertAdjacentHTML("beforeend", clone);
+  parentSelector.insertAdjacentHTML("beforeend", clone);
+  parentSelector.insertAdjacentHTML("beforeend", clone);
+  parentSelector.insertAdjacentHTML("beforeend", clone);
+  parentSelector.insertAdjacentHTML("beforeend", clone);
+  parentSelector.insertAdjacentHTML("beforeend", clone);
+  parentSelector.insertAdjacentHTML("beforeend", clone);
+  parentSelector.insertAdjacentHTML("beforeend", clone);
+  parentSelector.insertAdjacentHTML("beforeend", clone);
+  parentSelector.insertAdjacentHTML("beforeend", clone);
+  parentSelector.insertAdjacentHTML("beforeend", clone);
+  parentSelector.insertAdjacentHTML("beforeend", clone);
+
+  let i = 0;
+
+  // Configuramos el efecto de desplazamiento
+  setInterval(() => {
+    firstElement.style.marginLeft = `-${i}px`;
+
+    if (i > firstElement.clientWidth) {
+      i = 0;
+    }
+
+    i += speed;
+  }, 20); // Ajusta el tiempo para suavizar la animación
+}
+
+// Llamamos a la función al cargar el DOM
+document.addEventListener("DOMContentLoaded", () => {
+  marqueeEffect(".marquee-bar .wrapper", 1); // Cambia el selector y la velocidad según sea necesario
+});
+
+</script>
