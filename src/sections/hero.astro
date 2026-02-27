@@ -1,6 +1,13 @@
 ---
 import Badget from '../components/Badget.astro';
 import WelcomeCard from '../components/WelcomeCard.astro';
+
+const photos = [
+    { src: "/profile_01.jpeg", alt: "Nico Gaitán - Retrato" },
+    { src: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&h=600&fit=crop&crop=face", alt: "Nico Gaitán - Trabajo" },
+    { src: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&h=600&fit=crop&crop=face", alt: "Nico Gaitán - Creativo" },
+    { src: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&h=600&fit=crop&crop=face", alt: "Nico Gaitán - Casual" },
+];
 ---
 
 <section id="inicio" class="hero">
@@ -8,7 +15,18 @@ import WelcomeCard from '../components/WelcomeCard.astro';
 
     <WelcomeCard name='Nico Gaitán' description='Creativo digital con mentalidad de desarrollador. Transformo ideas en soluciones funcionales, medibles y con sentido.' />
 
-    <img src="/profile_01.jpeg" alt="Nicolás Gaitán Gómez">
+    <div class="photo-slider">
+        <div class="swiper" id="heroSwiper">
+            <div class="swiper-wrapper">
+                {photos.map((photo) => (
+                    <div class="swiper-slide">
+                        <img src={photo.src} alt={photo.alt} draggable="false">
+                    </div>
+                ))}
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
 
     <div class="ctas">
         <a href="#" class="btn" aria-label="Descargar currículum en PDF">
@@ -59,14 +77,49 @@ import WelcomeCard from '../components/WelcomeCard.astro';
     .hero {
         padding-top: 2rem;
     }
-    .hero img {
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        transition: box-shadow 0.3s ease, transform 0.3s ease;
+
+    .photo-slider {
+        width: 85%;
+        max-width: 320px;
+        margin: 0 auto 1rem;
     }
 
-    .hero img:hover {
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-        transform: scale(1.02);
+    .photo-slider .swiper {
+        width: 100%;
+        padding: 1rem 0 2.5rem;
+        overflow: visible;
+    }
+
+    .photo-slider .swiper-slide {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .photo-slider .swiper-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: var(--border-radius);
+    }
+
+    .photo-slider .swiper-pagination {
+        bottom: 0 !important;
+    }
+
+    .photo-slider .swiper-pagination-bullet {
+        width: 10px;
+        height: 10px;
+        background: var(--color-light-grey);
+        opacity: 1;
+        transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .photo-slider .swiper-pagination-bullet-active {
+        background: var(--color-primary);
+        transform: scale(1.2);
     }
 
     .hero .ctas {
@@ -114,3 +167,40 @@ import WelcomeCard from '../components/WelcomeCard.astro';
         transform: scale(1.08);
     }
 </style>
+
+<script>
+import Swiper from 'swiper';
+import { EffectCards, Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/effect-cards';
+import 'swiper/css/pagination';
+
+function initSwiper() {
+    const swiperEl = document.getElementById('heroSwiper');
+    if (!swiperEl) return;
+
+    new Swiper(swiperEl, {
+        modules: [EffectCards, Pagination],
+        effect: 'cards',
+        grabCursor: true,
+        loop: true,
+        cardsEffect: {
+            slideShadows: true,
+            perSlideOffset: 8,
+            perSlideRotate: 2,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+    });
+}
+
+if (typeof document !== 'undefined') {
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initSwiper);
+    } else {
+        initSwiper();
+    }
+}
+</script>

@@ -5,33 +5,72 @@ interface Props {
 }
 
 const { name, description } = Astro.props as Props;
+const nameLetters = name.split('');
 ---
 
-<h1>
-    Hola, <br>
-    soy <span>{name} 👋</span>
+<h1 class="hero-title">
+    <span class="line-1">
+        <span class="word" data-animate="word">Hola,</span>
+    </span>
+    <span class="line-2">
+        <span class="word" data-animate="word">soy</span>
+        <span class="name" data-animate="name">
+            {nameLetters.map((letter, i) => (
+                <span class="letter" style={`--i: ${i}`}>{letter === ' ' ? '\u00A0' : letter}</span>
+            ))}
+        </span>
+        <span class="wave" data-animate="wave">👋</span>
+    </span>
 </h1>
 
-<p>
+<p class="hero-description">
     {description}
 </p>
 
 <style>
-    h1 {
+    .hero-title {
 		font-weight: 300;
 		font-size: 3rem;
-        line-height: 1;
+        line-height: 1.1;
 		color: var(--color-dark);
         margin-bottom: 2rem;
+        overflow: visible;
 	}
 
-	h1 span {
+    .line-1, .line-2 {
+        display: block;
+    }
+
+    .line-2 {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 0.3em;
+    }
+
+    .word {
+        display: inline-block;
+    }
+
+	.name {
 		font-weight: bold;
 		font-size: 2.5rem;
 		color: var(--color-primary);
+        display: inline-flex;
 	}
 
-    p {
+    .name .letter {
+        display: inline-block;
+        transform-origin: bottom center;
+    }
+
+    .wave {
+        display: inline-block;
+        font-size: 2.5rem;
+        transform-origin: 70% 70%;
+    }
+
+    .hero-description {
         font-size: 1rem;
         color: var(--color-text);
         margin-bottom: 2rem;
