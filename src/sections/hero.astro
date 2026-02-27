@@ -3,7 +3,7 @@ import Badget from '../components/Badget.astro';
 import WelcomeCard from '../components/WelcomeCard.astro';
 ---
 
-<section class="hero">
+<section id="inicio" class="hero">
     <Badget />
 
     <WelcomeCard name='Nico Gaitán' description='Creativo digital con mentalidad de desarrollador. Transformo ideas en soluciones funcionales, medibles y con sentido.' />
@@ -11,7 +11,7 @@ import WelcomeCard from '../components/WelcomeCard.astro';
     <img src="/profile_01.jpeg" alt="Nicolás Gaitán Gómez">
 
     <div class="ctas">
-        <a href="#" class="btn">
+        <a href="#" class="btn" aria-label="Descargar currículum en PDF">
             <svg
             xmlns="http://www.w3.org/2000/svg"
             width="40"
@@ -32,7 +32,7 @@ import WelcomeCard from '../components/WelcomeCard.astro';
             Descargar CV
         </a>
 
-        <a href="#" class="btn">
+        <a href="#" class="btn" aria-label="Ver perfil en LinkedIn" target="_blank" rel="noopener noreferrer">
             <svg
             xmlns="http://www.w3.org/2000/svg"
             width="40"
@@ -59,8 +59,14 @@ import WelcomeCard from '../components/WelcomeCard.astro';
     .hero {
         padding-top: 2rem;
     }
-    img {
+    .hero img {
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    .hero img:hover {
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        transform: scale(1.02);
     }
 
     .hero .ctas {
@@ -82,12 +88,29 @@ import WelcomeCard from '../components/WelcomeCard.astro';
         color: var(--color-dark);
         border: 1px solid var(--color-dark);
         border-radius: var(--border-radius);
-        transition: var(--transition);
+        transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease, color 0.25s ease;
+    }
+
+    .hero .ctas .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        background-color: var(--color-dark);
+        color: var(--color-light);
+    }
+
+    .hero .ctas .btn:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     }
 
     .hero .ctas .btn svg {
         width: 24px;
         height: 24px;
         stroke-width: 1.5;
+        transition: transform 0.25s ease;
+    }
+
+    .hero .ctas .btn:hover svg {
+        transform: scale(1.08);
     }
 </style>

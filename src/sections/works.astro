@@ -2,7 +2,7 @@
 
 ---
 
-<section class="history">
+<section id="experiencia" class="history works">
     <h2 class="heading">
     <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -89,6 +89,12 @@
         background-color: var(--color-light);
         border-radius: var(--border-radius);
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .timeline .event:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
     }
 
     .timeline .event .logo {

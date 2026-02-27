@@ -13,19 +13,24 @@ import Footer from '../sections/footer.astro';
 ---
 
 <Layout>
-	<div class="container">
+	<nav class="nav" aria-label="Navegación principal">
+		<a href="#inicio">Inicio</a>
+		<a href="#historia">Historia</a>
+		<a href="#habilidades">Habilidades</a>
+		<a href="#experiencia">Experiencia</a>
+		<a href="#contacto">Contacto</a>
+	</nav>
+
+	<div id="main" class="container" tabindex="-1">
 		<Hero />
 	</div>
 
 	<MarqueeV1 text='Publicista • Desarrollador • Project Manager' bgColor='#ad0000' textColor='#fff' />
 
-	<div class="container">
+	<div class="container container--sections">
 		<History />
-
 		<Skills />
-
 		<Works />
-
 		<Contact />
 	</div>
 
@@ -33,6 +38,43 @@ import Footer from '../sections/footer.astro';
 </Layout>
 
 <style>
+	.nav {
+		position: sticky;
+		top: 0;
+		z-index: var(--menu-layer);
+		display: none;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 0.5rem 1rem;
+		padding: 0.75rem 1rem;
+		background: var(--color-background);
+		border-bottom: 1px solid var(--color-light-grey);
+	}
+
+	@media (min-width: 768px) {
+		.nav {
+			display: flex;
+		}
+	}
+	.nav a {
+		display: inline-block;
+		font-size: var(--font-size-small);
+		font-weight: 500;
+		color: var(--color-text);
+		text-decoration: none;
+		padding: 0.35rem 0.6rem;
+		border-radius: var(--border-radius);
+		transition: background 0.2s ease, color 0.2s ease;
+	}
+	.nav a:hover {
+		background: var(--color-light-grey);
+		color: var(--color-dark);
+	}
+	.nav a:focus-visible {
+		outline: 2px solid var(--color-primary);
+		outline-offset: 2px;
+	}
+
 	.container {
 		width: 100%;
 		display: flex;
@@ -40,10 +82,28 @@ import Footer from '../sections/footer.astro';
 		background-color: var(--color-background);
 		gap: var(--gap-medium);
 		padding: 2rem 1rem;
-
 		max-width: 480px;
 		margin: 0 auto;
-
 		position: relative;
+	}
+
+	.container--sections {
+		gap: var(--gap-xlarge);
+		padding-top: 2.5rem;
+		padding-bottom: 2.5rem;
+	}
+
+	@media (min-width: 640px) {
+		.container {
+			max-width: 600px;
+			padding-left: 1.5rem;
+			padding-right: 1.5rem;
+		}
+	}
+
+	@media (min-width: 900px) {
+		.container {
+			max-width: 720px;
+		}
 	}
 </style>

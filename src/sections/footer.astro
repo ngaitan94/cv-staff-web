@@ -3,9 +3,18 @@
 ---
 
 <footer>
-    <div class="rrss">
-        <a href="#" class="social-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="32" height="32" stroke-width="1.5">
+    <div class="rrss" role="list">
+        <a href="#" class="social-icon" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" role="listitem">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="32" height="32" stroke-width="1.5" aria-hidden="true">
+                <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path>
+                <path d="M8 11l0 5"></path>
+                <path d="M8 8l0 .01"></path>
+                <path d="M12 16l0 -5"></path>
+                <path d="M16 16v-3a2 2 0 0 0 -4 0"></path>
+            </svg>
+        </a>
+        <a href="#" class="social-icon" aria-label="Twitter / X" target="_blank" rel="noopener noreferrer" role="listitem">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="32" height="32" stroke-width="1.5" aria-hidden="true">
                 <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path>
                 <path d="M8 9h1l3 3l3 -3h1"></path>
                 <path d="M8 15l2 0"></path>
@@ -14,17 +23,8 @@
                 <path d="M15 9l0 6"></path>
             </svg>
         </a>
-        <a href="#" class="social-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="32" height="32" stroke-width="1.5">
-                <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path>
-                <path d="M8 11l0 5"></path>
-                <path d="M8 8l0 .01"></path>
-                <path d="M12 16l0 -5"></path>
-                <path d="M16 16v-3a2 2 0 0 0 -4 0"></path>
-            </svg>
-        </a>
-        <a href="#" class="social-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="32" height="32" stroke-width="1.5">
+        <a href="#" class="social-icon" aria-label="GitHub" target="_blank" rel="noopener noreferrer" role="listitem">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="32" height="32" stroke-width="1.5" aria-hidden="true">
                 <path d="M3 18v-12h4.5a3 3 0 0 1 0 6a3 3 0 0 1 0 6h-4.5"></path>
                 <path d="M3 12l4.5 0"></path>
                 <path d="M14 13h7a3.5 3.5 0 0 0 -7 0v2a3.5 3.5 0 0 0 6.64 1"></path>
@@ -70,8 +70,11 @@
 
 .copyright {
     font-size: 0.8rem;
-    color: var(--color-text);
+    color: var(--color-dark-grey);
     text-align: center;
-    padding: 1rem 0;
+    padding: 1.25rem 1rem 1rem;
+    max-width: 24rem;
+    margin: 0 auto;
+    line-height: 1.4;
 }
 </style>

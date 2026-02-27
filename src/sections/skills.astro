@@ -2,7 +2,7 @@
 
 ---
 
-<section class="history">
+<section id="habilidades" class="history skills">
     <h2 class="heading">
     <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -76,5 +76,19 @@
         border-radius: var(--border-radius);
         font-size: var(--font-size-small);
         font-weight: 500;
+        border: 1px solid transparent;
+        transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .tag:hover {
+        transform: scale(1.05);
+        background-color: var(--color-primary);
+        color: var(--color-light);
+        border-color: var(--color-primary-dark);
+        box-shadow: 0 2px 8px rgba(173, 0, 0, 0.25);
+    }
+
+    .tag:active {
+        transform: scale(0.98);
     }
 </style>
