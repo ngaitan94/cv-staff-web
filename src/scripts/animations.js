@@ -260,6 +260,63 @@ function initContactReveal() {
   });
 }
 
+/**
+ * Chatbot: entrada animada
+ */
+function initChatbotReveal() {
+  const section = document.querySelector('.chatbot-section');
+  if (!section) return;
+
+  const heading = section.querySelector('.heading');
+  const subline = section.querySelector('.subline');
+  const chatContainer = section.querySelector('.chat-container');
+
+  if (heading) {
+    gsap.from(heading, {
+      opacity: 0,
+      y: 40,
+      duration: 0.7,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: section,
+        start: 'top 80%',
+        toggleActions: 'play none none none',
+      },
+    });
+  }
+
+  if (subline) {
+    gsap.from(subline, {
+      opacity: 0,
+      y: 30,
+      duration: 0.6,
+      delay: 0.1,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: section,
+        start: 'top 80%',
+        toggleActions: 'play none none none',
+      },
+    });
+  }
+
+  if (chatContainer) {
+    gsap.from(chatContainer, {
+      opacity: 0,
+      y: 50,
+      scale: 0.95,
+      duration: 0.8,
+      delay: 0.2,
+      ease: 'back.out(1.2)',
+      scrollTrigger: {
+        trigger: chatContainer,
+        start: 'top 85%',
+        toggleActions: 'play none none none',
+      },
+    });
+  }
+}
+
 function init() {
   if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     return;
@@ -268,6 +325,7 @@ function init() {
   initScrollReveal();
   initWorksReveal();
   initSkillsReveal();
+  initChatbotReveal();
   initContactReveal();
 }
 

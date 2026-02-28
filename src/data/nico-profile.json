@@ -1,0 +1,70 @@
+{
+  "nombre": "Nicolás Gaitán",
+  "apodo": "Nico",
+  "titulo": "Publicista Creativo & Digital Project Manager",
+  "ubicacion": "Chile",
+  "empresa_actual": "VML Chile",
+  "email": "nicolas@inadaptado.cl",
+  "telefono": "+56 9 3116 5405",
+  "sitio_web": "https://inadaptado.cl",
+  "resumen": "Publicista creativo apasionado por la tecnología y la innovación, con más de 7 años de experiencia en agencias. Me especializo en Producción Digital, Desarrollo Web y Gestión de Proyectos. Entiendo la tecnología no solo como una herramienta, sino como parte del pensamiento creativo y estratégico.",
+  "propuesta_valor": [
+    "Combino creatividad publicitaria con habilidades técnicas de desarrollo",
+    "Liderazgo de equipos multidisciplinarios (Arte, Redacción, Audiovisual, Desarrollo, Cuentas)",
+    "Experiencia en automatización y optimización de procesos",
+    "Visión estratégica digital con ejecución técnica",
+    "Adaptabilidad a múltiples industrias: automotriz, retail, telco, salud, finanzas"
+  ],
+  "experiencia": [
+    {
+      "cargo": "Digital Project Manager",
+      "empresa": "VML Chile",
+      "periodo": "Enero 2024 - Actualidad",
+      "descripcion": "Lidero la adopción e implementación de WPP Open, plataforma colaborativa basada en IA para gestión de proyectos, contenidos y flujos de trabajo. Coordino equipos multidisciplinarios en proyectos CRM, APP y Web para marcas como Movistar, IKEA y Reebok. Impulso la innovación mediante automatización, metodologías ágiles (Scrum/Kanban) y herramientas como SalesForce, Asana y plataformas SaaS."
+    },
+    {
+      "cargo": "Digital Project Manager",
+      "empresa": "Wunderman Thompson Chile",
+      "periodo": "Enero 2021 - Enero 2024",
+      "descripcion": "Responsable de la gestión integral de proyectos digitales y CRM para clientes como Derco, Movistar, IKEA y Mallplaza. Coordiné equipos creativos y técnicos, liderando campañas en plataformas como SalesForce Marketing Cloud, Eloqua y Click Dimensions. Diseñé piezas HTML, gestioné journeys automatizados y aseguré la calidad de entregables."
+    },
+    {
+      "cargo": "CEO / Fundador",
+      "empresa": "Inadaptado.cl",
+      "periodo": "Enero 2020 - Actualidad",
+      "descripcion": "Fundé una agencia boutique especializada en soluciones digitales a medida. Dirijo proyectos de desarrollo web (PHP, WordPress, WooCommerce), diseño UI/UX, chatbots y branding para clientes de diversas industrias incluyendo clínicas, estudios de diseño, hoteles, retail y startups."
+    }
+  ],
+  "roles_desempenados": [
+    "Project Manager Digital",
+    "Chief Digital Officer",
+    "Frontend Developer",
+    "Content Manager",
+    "Productor Web"
+  ],
+  "habilidades": {
+    "desarrollo": ["HTML", "CSS", "JavaScript", "PHP", "MySQL", "Node.js", "Astro.js", "Git", "WordPress", "WooCommerce"],
+    "crm": ["SalesForce Marketing Cloud", "Eloqua", "Selligent", "MasterBase", "Click Dimensions"],
+    "gestion": ["Asana", "Notion", "Miro", "Kanban", "Scrum"],
+    "analytics": ["Google Analytics", "Looker Studio", "Power BI"],
+    "diseno": ["Figma", "Adobe Suite"],
+    "ia_automatizacion": ["n8n", "WPP Open", "Claude MCP", "Midjourney"]
+  },
+  "clientes_destacados": ["Movistar", "IKEA", "Reebok", "Derco", "Mallplaza"],
+  "industrias": ["Automotriz", "Retail", "Telecomunicaciones", "Salud", "Finanzas"],
+  "idiomas": ["Español (nativo)", "Inglés (profesional)"],
+  "personalidad": {
+    "estilo": "Cercano, directo y entusiasta",
+    "valores": ["Creatividad", "Innovación", "Colaboración", "Excelencia técnica"],
+    "intereses": ["Tecnología", "IA", "Automatización", "Diseño", "Música"]
+  },
+  "razones_para_contratar": [
+    "Perfil híbrido único: creatividad + técnica + gestión",
+    "Experiencia comprobada en agencias de primer nivel (WPP)",
+    "Capacidad de liderar equipos y proyectos complejos",
+    "Conocimiento profundo de CRM y automatización",
+    "Emprendedor con visión de negocio",
+    "Actualizado en tendencias de IA y tecnología",
+    "Adaptable a diferentes industrias y desafíos"
+  ]
+}
