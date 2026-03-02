@@ -1,26 +1,49 @@
 ---
-import Badget from '../components/Badget.astro';
 import WelcomeCard from '../components/WelcomeCard.astro';
 
 const photos = [
-    { src: "/profile_01.jpeg", alt: "Nico Gaitán - Retrato" },
-    { src: "/assets/images/photo_talk.png", alt: "Nico Gaitán - Creativo" },
-    { src: "/assets/images/photo_setup.jpeg", alt: "Nico Gaitán - Casual" },
-    { src: "/assets/images/photo_doodle.jpeg", alt: "Nico Gaitán - Trabajo" },
+    { type: "image", src: "/profile_01.jpeg", alt: "Nico Gaitán - Retrato" },
+    { type: "video", src: "/assets/videos/photo_video.mp4", alt: "Nico Gaitán - Video" },
+    { type: "image", src: "/assets/images/photo_talk.png", alt: "Nico Gaitán - Creativo" },
+    { type: "image", src: "/assets/images/photo_setup.jpeg", alt: "Nico Gaitán - Casual" },
+    { type: "image", src: "/assets/images/photo_doodle.jpeg", alt: "Nico Gaitán - Trabajo" },
 ];
 ---
 
 <section id="inicio" class="hero">
-    <Badget />
-
     <WelcomeCard name='Nico Gaitán' description='Creativo digital con visión técnica. Convierto ideas en experiencias digitales que funcionan, impactan y generan resultados.' />
 
     <div class="photo-slider">
         <div class="swiper" id="heroSwiper">
             <div class="swiper-wrapper">
-                {photos.map((photo) => (
-                    <div class="swiper-slide">
-                        <img src={photo.src} alt={photo.alt} draggable="false">
+                {photos.map((photo, index) => (
+                    <div class="swiper-slide" data-index={index}>
+                        {photo.type === "video" ? (
+                            <div class="video-container">
+                                <video 
+                                    src={photo.src} 
+                                    class="hero-video"
+                                    muted
+                                    loop
+                                    playsinline
+                                    data-video-index={index}
+                                ></video>
+                                <button class="video-sound-toggle" aria-label="Activar/desactivar sonido" data-video-index={index}>
+                                    <svg class="sound-off" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                                        <line x1="23" y1="9" x2="17" y2="15"></line>
+                                        <line x1="17" y1="9" x2="23" y2="15"></line>
+                                    </svg>
+                                    <svg class="sound-on" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                                        <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+                                        <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        ) : (
+                            <img src={photo.src} alt={photo.alt} draggable="false">
+                        )}
                     </div>
                 ))}
             </div>
@@ -98,11 +121,62 @@ const photos = [
         box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
     }
 
-    .photo-slider .swiper-slide img {
+    .photo-slider .swiper-slide img,
+    .photo-slider .swiper-slide video {
         width: 100%;
         height: 100%;
         object-fit: cover;
         border-radius: var(--border-radius);
+    }
+
+    .video-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    .video-sound-toggle {
+        position: absolute;
+        bottom: 12px;
+        right: 12px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: white;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        z-index: 10;
+    }
+
+    .video-sound-toggle:hover {
+        background: rgba(0, 0, 0, 0.8);
+        transform: scale(1.1);
+    }
+
+    .video-sound-toggle svg {
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        transition: opacity 0.3s ease;
+    }
+
+    .video-sound-toggle .sound-on {
+        opacity: 0;
+    }
+
+    .video-sound-toggle.unmuted .sound-off {
+        opacity: 0;
+    }
+
+    .video-sound-toggle.unmuted .sound-on {
+        opacity: 1;
     }
 
     .photo-slider .swiper-pagination {
@@ -179,7 +253,7 @@ function initSwiper() {
     const swiperEl = document.getElementById('heroSwiper');
     if (!swiperEl) return;
 
-    new Swiper(swiperEl, {
+    const swiper = new Swiper(swiperEl, {
         modules: [EffectCards, Pagination],
         effect: 'cards',
         grabCursor: true,
@@ -193,6 +267,46 @@ function initSwiper() {
             el: '.swiper-pagination',
             clickable: true,
         },
+        on: {
+            slideChange: function() {
+                // Pause all videos
+                const videos = document.querySelectorAll('.hero-video');
+                videos.forEach(video => {
+                    video.pause();
+                    video.currentTime = 0; // Reset to start
+                });
+                
+                // Play video ONLY on active slide
+                const activeSlide = this.slides[this.activeIndex];
+                const activeVideo = activeSlide?.querySelector('.hero-video');
+                if (activeVideo) {
+                    activeVideo.play().catch(err => console.log('Video play error:', err));
+                }
+            },
+            init: function() {
+                // Check if first slide has a video and play it
+                const firstSlide = this.slides[this.activeIndex];
+                const firstVideo = firstSlide?.querySelector('.hero-video');
+                if (firstVideo) {
+                    firstVideo.play().catch(err => console.log('Video play error:', err));
+                }
+            }
+        }
+    });
+
+    // Initialize sound toggle buttons
+    const soundToggles = document.querySelectorAll('.video-sound-toggle');
+    soundToggles.forEach(toggle => {
+        toggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const videoIndex = toggle.getAttribute('data-video-index');
+            const video = document.querySelector(`.hero-video[data-video-index="${videoIndex}"]`);
+            
+            if (video) {
+                video.muted = !video.muted;
+                toggle.classList.toggle('unmuted', !video.muted);
+            }
+        });
     });
 }
 
