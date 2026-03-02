@@ -5,7 +5,7 @@ const API_KEY = import.meta.env.PUBLIC_GROQ_API_KEY || '';
 const profileData = JSON.stringify(nicoProfile);
 ---
 
-<section id="ai-chat" class="history chatbot-section">
+<section id="ai-chat" class="history ai-oracle-section">
     <h2 class="heading">
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -21,70 +21,67 @@ const profileData = JSON.stringify(nicoProfile);
             <path d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09Z" />
             <path d="M18.25 6.5 18 7.5l-.25-1a2 2 0 0 0-1.25-1.25L15.5 5l1-.25a2 2 0 0 0 1.25-1.25L18 2.5l.25 1a2 2 0 0 0 1.25 1.25l1 .25-1 .25a2 2 0 0 0-1.25 1.25Z" />
         </svg>
-        Habla con mi versión AI
+        Pregunta lo que necesites
     </h2>
 
-    <div class="ai-assistant">
-        <div class="ai-brain">
-            <div class="brain-ring"></div>
-            <div class="brain-ring"></div>
-            <div class="brain-ring"></div>
-            <div class="brain-core">
-                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09Z" />
-                </svg>
-            </div>
-        </div>
-
-        <div class="ai-response-area" id="ai-response-area">
-            <p class="ai-response" id="ai-response">Pregúntame lo que quieras sobre Nico: su experiencia, habilidades, o por qué deberías trabajar con él.</p>
-        </div>
-
-        <div class="ai-loader" id="ai-loader" hidden>
-            <div class="loader-dots">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <p class="loader-text">Pensando...</p>
-        </div>
-
-        <div class="ai-suggestions" id="ai-suggestions">
-            <button class="suggestion-chip" data-question="¿Cuál es tu experiencia profesional?">
-                <span class="chip-icon">💼</span>
-                <span>Experiencia</span>
-            </button>
-            <button class="suggestion-chip" data-question="¿Qué habilidades técnicas tienes?">
-                <span class="chip-icon">🛠️</span>
-                <span>Habilidades</span>
-            </button>
-            <button class="suggestion-chip" data-question="¿Por qué debería contratarte?">
-                <span class="chip-icon">🚀</span>
-                <span>Contratarte</span>
-            </button>
-        </div>
-
-        <form class="ai-input-wrapper" id="chat-form">
-            <div class="ai-input-container">
-                <input 
-                    type="text" 
-                    id="user-input" 
-                    placeholder="Escribe tu pregunta..." 
-                    autocomplete="off"
-                    aria-label="Escribe tu mensaje"
-                />
-                <button type="submit" aria-label="Enviar mensaje" id="send-btn">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M5 12h14" />
-                        <path d="m12 5 7 7-7 7" />
+    <div class="oracle-container">
+        <!-- Answer Card -->
+        <div class="answer-card" id="answer-card">
+            <div class="card-glow"></div>
+            <div class="card-content">
+                <div class="icon-wrapper" id="icon-wrapper">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 16v-4"/>
+                        <path d="M12 8h.01"/>
                     </svg>
-                </button>
+                </div>
+                <p class="answer-text" id="answer-text">
+                    Escribe una pregunta sobre mi experiencia, habilidades o por qué deberías trabajar conmigo.
+                </p>
             </div>
+        </div>
+
+        <!-- Quick Questions -->
+        <div class="quick-questions" id="quick-questions">
+            <button class="q-btn" data-q="¿Cuáles son tus principales fortalezas?">
+                <span class="q-icon">💪</span>
+                <span class="q-text">Fortalezas</span>
+            </button>
+            <button class="q-btn" data-q="¿Qué experiencia tienes con proyectos CRM?">
+                <span class="q-icon">📊</span>
+                <span class="q-text">CRM</span>
+            </button>
+            <button class="q-btn" data-q="¿Por qué debería contratarte?">
+                <span class="q-icon">🚀</span>
+                <span class="q-text">Contratar</span>
+            </button>
+            <button class="q-btn" data-q="¿Qué herramientas dominas?">
+                <span class="q-icon">🛠️</span>
+                <span class="q-text">Herramientas</span>
+            </button>
+        </div>
+
+        <!-- Input Area -->
+        <form class="oracle-input" id="oracle-form">
+            <input 
+                type="text" 
+                id="oracle-input" 
+                placeholder="Escribe tu pregunta aquí..."
+                autocomplete="off"
+            />
+            <button type="submit" id="ask-btn" aria-label="Consultar">
+                <span class="btn-text">Consultar</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"/>
+                    <path d="m21 21-4.35-4.35"/>
+                </svg>
+            </button>
         </form>
 
-        <p class="ai-footer">
-            <span class="pulse-dot"></span>
-            Nico AI · Siempre disponible
+        <p class="ai-badge">
+            <span class="badge-dot"></span>
+            Respuestas generadas por IA
         </p>
     </div>
 </section>
@@ -101,63 +98,62 @@ const profileData = JSON.stringify(nicoProfile);
     let lastMessageTime = 0;
     const COOLDOWN_MS = 2000;
 
-    const responseArea = document.getElementById('ai-response-area');
-    const responseText = document.getElementById('ai-response');
-    const loader = document.getElementById('ai-loader');
-    const suggestions = document.getElementById('ai-suggestions');
-    const chatForm = document.getElementById('chat-form');
-    const userInput = document.getElementById('user-input');
-    const sendBtn = document.getElementById('send-btn');
-    const suggestionChips = document.querySelectorAll('.suggestion-chip');
-    const aiBrain = document.querySelector('.ai-brain');
+    const answerCard = document.getElementById('answer-card');
+    const answerText = document.getElementById('answer-text');
+    const iconWrapper = document.getElementById('icon-wrapper');
+    const oracleForm = document.getElementById('oracle-form');
+    const oracleInput = document.getElementById('oracle-input');
+    const askBtn = document.getElementById('ask-btn');
+    const quickBtns = document.querySelectorAll('.q-btn');
+    const quickQuestions = document.getElementById('quick-questions');
 
     function getCooldownRemaining() {
         const elapsed = Date.now() - lastMessageTime;
         return Math.max(0, COOLDOWN_MS - elapsed);
     }
 
-    function formatCooldown(ms) {
-        return Math.ceil(ms / 1000);
-    }
-
     function setLoading(loading) {
         isLoading = loading;
-        sendBtn.disabled = loading;
-        userInput.disabled = loading;
+        askBtn.disabled = loading;
+        oracleInput.disabled = loading;
         
         if (loading) {
-            loader.hidden = false;
-            responseArea.classList.add('hidden');
-            suggestions.classList.add('hidden');
-            aiBrain.classList.add('thinking');
+            answerCard.classList.add('loading');
+            iconWrapper.innerHTML = '<div class="spinner"></div>';
+            answerText.textContent = 'Analizando tu consulta...';
+            quickQuestions.style.opacity = '0.3';
+            quickQuestions.style.pointerEvents = 'none';
         } else {
-            loader.hidden = true;
-            responseArea.classList.remove('hidden');
-            aiBrain.classList.remove('thinking');
+            answerCard.classList.remove('loading');
+            answerCard.classList.add('answered');
+            iconWrapper.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>';
+            quickQuestions.style.opacity = '1';
+            quickQuestions.style.pointerEvents = 'auto';
         }
     }
 
-    function showResponse(text, isError) {
-        responseText.textContent = text;
-        responseArea.classList.remove('hidden');
+    function showAnswer(text, isError) {
+        answerText.textContent = text;
+        answerCard.classList.add('revealed');
         
         if (isError) {
-            responseArea.classList.add('error');
+            answerCard.classList.add('error');
+            iconWrapper.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>';
         } else {
-            responseArea.classList.remove('error');
+            answerCard.classList.remove('error');
         }
     }
 
-    async function sendMessage(userMessage) {
+    async function askQuestion(question) {
         if (isLoading) return;
         
         const cooldown = getCooldownRemaining();
         if (cooldown > 0) {
-            showResponse('⏳ Espera ' + formatCooldown(cooldown) + ' segundos...', true);
+            showAnswer('⏳ Espera ' + Math.ceil(cooldown / 1000) + ' segundos...', true);
             return;
         }
         
-        conversationHistory.push({ role: 'user', content: userMessage });
+        conversationHistory.push({ role: 'user', content: question });
         setLoading(true);
         lastMessageTime = Date.now();
 
@@ -195,42 +191,42 @@ const profileData = JSON.stringify(nicoProfile);
             }
 
             const data = await response.json();
-            let botMessage = 'Lo siento, no pude procesar tu mensaje.';
+            let answer = 'Lo siento, no pude procesar tu pregunta.';
             if (data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content) {
-                botMessage = data.choices[0].message.content;
+                answer = data.choices[0].message.content;
             }
             
-            conversationHistory.push({ role: 'assistant', content: botMessage });
-            showResponse(botMessage, false);
+            conversationHistory.push({ role: 'assistant', content: answer });
+            showAnswer(answer, false);
 
         } catch (error) {
             setLoading(false);
-            console.error('Chat error:', error);
+            console.error('Oracle error:', error);
             
             if (error.message === 'RATE_LIMIT') {
                 lastMessageTime = Date.now() + 10000;
-                showResponse('⏳ Límite alcanzado. Espera 10 segundos e intenta de nuevo.', true);
+                showAnswer('⏳ Demasiadas consultas. Espera 10 segundos.', true);
             } else {
-                showResponse('😅 Algo salió mal. Intenta de nuevo o contáctame en nicolas@inadaptado.cl', true);
+                showAnswer('😅 Algo salió mal. Contáctame directamente en nicolas@inadaptado.cl', true);
             }
             conversationHistory.pop();
         }
     }
 
-    chatForm.addEventListener('submit', function(e) {
+    oracleForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        const message = userInput.value.trim();
-        if (!message || isLoading) return;
+        const question = oracleInput.value.trim();
+        if (!question || isLoading) return;
         
-        userInput.value = '';
-        sendMessage(message);
+        oracleInput.value = '';
+        askQuestion(question);
     });
 
-    suggestionChips.forEach(function(chip) {
-        chip.addEventListener('click', function() {
-            const question = chip.getAttribute('data-question');
+    quickBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            const question = btn.getAttribute('data-q');
             if (question && !isLoading) {
-                sendMessage(question);
+                askQuestion(question);
             }
         });
     });
@@ -238,130 +234,111 @@ const profileData = JSON.stringify(nicoProfile);
 </script>
 
 <style>
-    .chatbot-section {
+    .ai-oracle-section {
         padding-bottom: 2rem;
     }
 
-    .ai-assistant {
-        background: linear-gradient(145deg, var(--color-light) 0%, #f8f8f8 100%);
-        border-radius: 1.5rem;
-        padding: 2rem 1.5rem;
-        text-align: center;
+    .oracle-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .answer-card {
         position: relative;
+        min-height: 250px;
+        background: linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%);
+        border-radius: 1.5rem;
+        padding: 2rem;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+        border: 2px solid transparent;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         overflow: hidden;
-        box-shadow: 
-            0 4px 24px rgba(0, 0, 0, 0.06),
-            inset 0 1px 0 rgba(255, 255, 255, 0.8);
     }
 
-    .ai-assistant::before {
-        content: '';
+    .card-glow {
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 3px;
-        background: linear-gradient(90deg, var(--color-primary), #ff6b6b, var(--color-primary));
-        background-size: 200% 100%;
-        animation: gradientMove 3s ease infinite;
+        inset: -2px;
+        background: linear-gradient(135deg, var(--color-primary), #ff6b6b, var(--color-primary));
+        background-size: 200% 200%;
+        border-radius: 1.5rem;
+        opacity: 0;
+        z-index: -1;
+        animation: gradientShift 3s ease infinite;
+        transition: opacity 0.4s ease;
     }
 
-    @keyframes gradientMove {
+    @keyframes gradientShift {
         0%, 100% { background-position: 0% 50%; }
         50% { background-position: 100% 50%; }
     }
 
-    .ai-brain {
-        position: relative;
+    .answer-card.loading .card-glow,
+    .answer-card.answered .card-glow {
+        opacity: 1;
+    }
+
+    .answer-card.revealed {
+        transform: scale(1.02);
+        box-shadow: 0 12px 48px rgba(173, 0, 0, 0.15);
+    }
+
+    .answer-card.error {
+        background: linear-gradient(135deg, #fff5f5 0%, #ffe5e5 100%);
+    }
+
+    .card-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        text-align: center;
+    }
+
+    .icon-wrapper {
         width: 80px;
         height: 80px;
-        margin: 0 auto 1.5rem;
-    }
-
-    .brain-ring {
-        position: absolute;
-        inset: 0;
-        border: 2px solid var(--color-primary);
-        border-radius: 50%;
-        opacity: 0.2;
-    }
-
-    .brain-ring:nth-child(1) {
-        animation: pulse-ring 2s ease-out infinite;
-    }
-
-    .brain-ring:nth-child(2) {
-        animation: pulse-ring 2s ease-out infinite 0.5s;
-    }
-
-    .brain-ring:nth-child(3) {
-        animation: pulse-ring 2s ease-out infinite 1s;
-    }
-
-    .ai-brain.thinking .brain-ring {
-        animation-duration: 0.8s;
-        border-color: var(--color-primary);
-        opacity: 0.4;
-    }
-
-    @keyframes pulse-ring {
-        0% {
-            transform: scale(0.8);
-            opacity: 0.4;
-        }
-        100% {
-            transform: scale(1.4);
-            opacity: 0;
-        }
-    }
-
-    .brain-core {
-        position: absolute;
-        inset: 15px;
-        background: linear-gradient(135deg, var(--color-primary) 0%, #d32f2f 100%);
+        background: linear-gradient(135deg, var(--color-primary), #d32f2f);
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        box-shadow: 0 4px 20px rgba(173, 0, 0, 0.3);
+        box-shadow: 0 8px 24px rgba(173, 0, 0, 0.25);
+        transition: all 0.3s ease;
     }
 
-    .brain-core svg {
+    .answer-card.loading .icon-wrapper {
+        animation: pulse-icon 1.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse-icon {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+    }
+
+    .icon-wrapper svg {
         color: white;
     }
 
-    .ai-brain.thinking .brain-core {
-        animation: brain-pulse 0.6s ease-in-out infinite alternate;
+    .spinner {
+        width: 40px;
+        height: 40px;
+        border: 4px solid rgba(255, 255, 255, 0.3);
+        border-top-color: white;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
     }
 
-    @keyframes brain-pulse {
-        from { transform: scale(1); }
-        to { transform: scale(1.1); }
+    @keyframes spin {
+        to { transform: rotate(360deg); }
     }
 
-    .ai-response-area {
-        min-height: 100px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 1.5rem;
-        transition: opacity 0.3s ease;
-    }
-
-    .ai-response-area.hidden {
-        display: none;
-    }
-
-    .ai-response-area.error .ai-response {
-        color: var(--color-primary);
-    }
-
-    .ai-response {
-        font-size: 1rem;
+    .answer-text {
+        font-size: 1.05rem;
         line-height: 1.7;
         color: var(--color-dark);
         max-width: 100%;
-        animation: fadeIn 0.4s ease;
+        animation: fadeIn 0.5s ease;
     }
 
     @keyframes fadeIn {
@@ -369,124 +346,64 @@ const profileData = JSON.stringify(nicoProfile);
         to { opacity: 1; transform: translateY(0); }
     }
 
-    .ai-loader {
-        min-height: 100px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 1rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .ai-loader[hidden] {
-        display: none;
-    }
-
-    .loader-dots {
-        display: flex;
-        gap: 8px;
-    }
-
-    .loader-dots span {
-        width: 12px;
-        height: 12px;
-        background: var(--color-primary);
-        border-radius: 50%;
-        animation: bounce-loader 1.4s ease-in-out infinite;
-    }
-
-    .loader-dots span:nth-child(1) { animation-delay: 0s; }
-    .loader-dots span:nth-child(2) { animation-delay: 0.2s; }
-    .loader-dots span:nth-child(3) { animation-delay: 0.4s; }
-
-    @keyframes bounce-loader {
-        0%, 80%, 100% { 
-            transform: scale(0.6);
-            opacity: 0.4;
-        }
-        40% { 
-            transform: scale(1);
-            opacity: 1;
-        }
-    }
-
-    .loader-text {
-        font-size: 0.85rem;
-        color: var(--color-dark-grey);
-        animation: pulse-text 1.5s ease-in-out infinite;
-    }
-
-    @keyframes pulse-text {
-        0%, 100% { opacity: 0.5; }
-        50% { opacity: 1; }
-    }
-
-    .ai-suggestions {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 0.5rem;
-        margin-bottom: 1.5rem;
+    .quick-questions {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
         transition: opacity 0.3s ease;
     }
 
-    .ai-suggestions.hidden {
-        opacity: 0.3;
-        pointer-events: none;
-    }
-
-    .suggestion-chip {
+    .q-btn {
         display: flex;
+        flex-direction: column;
         align-items: center;
-        gap: 0.4rem;
-        padding: 0.5rem 1rem;
-        background: white;
-        border: 1px solid var(--color-light-grey);
-        border-radius: 2rem;
-        font-size: 0.85rem;
-        color: var(--color-dark);
-        cursor: pointer;
-        transition: all 0.25s ease;
-    }
-
-    .suggestion-chip:hover {
-        border-color: var(--color-primary);
-        color: var(--color-primary);
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(173, 0, 0, 0.15);
-    }
-
-    .suggestion-chip:active {
-        transform: translateY(0);
-    }
-
-    .chip-icon {
-        font-size: 1rem;
-    }
-
-    .ai-input-wrapper {
-        margin-bottom: 1rem;
-    }
-
-    .ai-input-container {
-        display: flex;
         gap: 0.5rem;
+        padding: 1rem;
+        background: white;
+        border: 2px solid var(--color-light-grey);
+        border-radius: 1rem;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .q-btn:hover {
+        border-color: var(--color-primary);
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(173, 0, 0, 0.15);
+    }
+
+    .q-btn:active {
+        transform: translateY(-2px);
+    }
+
+    .q-icon {
+        font-size: 1.75rem;
+    }
+
+    .q-text {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--color-dark);
+    }
+
+    .oracle-input {
+        display: flex;
+        gap: 0.75rem;
+        padding: 0.5rem;
         background: white;
         border: 2px solid var(--color-light-grey);
         border-radius: 3rem;
-        padding: 0.35rem;
-        transition: all 0.25s ease;
+        transition: all 0.3s ease;
     }
 
-    .ai-input-container:focus-within {
+    .oracle-input:focus-within {
         border-color: var(--color-primary);
         box-shadow: 0 0 0 4px rgba(173, 0, 0, 0.1);
     }
 
-    .ai-input-container input {
+    .oracle-input input {
         flex: 1;
-        padding: 0.7rem 1rem;
+        padding: 0.75rem 1.25rem;
         border: none;
         background: transparent;
         font-size: 0.95rem;
@@ -494,44 +411,50 @@ const profileData = JSON.stringify(nicoProfile);
         color: var(--color-dark);
     }
 
-    .ai-input-container input::placeholder {
+    .oracle-input input::placeholder {
         color: var(--color-light-grey);
     }
 
-    .ai-input-container input:disabled {
-        opacity: 0.5;
+    .oracle-input input:disabled {
+        opacity: 0.6;
     }
 
-    .ai-input-container button {
-        flex-shrink: 0;
-        width: 44px;
-        height: 44px;
-        border: none;
-        border-radius: 50%;
-        background: var(--color-primary);
-        color: white;
-        cursor: pointer;
+    .oracle-input button {
         display: flex;
         align-items: center;
-        justify-content: center;
-        transition: all 0.25s ease;
+        gap: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 2rem;
+        background: var(--color-primary);
+        color: white;
+        font-weight: 600;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        white-space: nowrap;
     }
 
-    .ai-input-container button:hover:not(:disabled) {
+    .oracle-input button:hover:not(:disabled) {
         background: #8a0000;
         transform: scale(1.05);
     }
 
-    .ai-input-container button:active:not(:disabled) {
-        transform: scale(0.95);
+    .oracle-input button:active:not(:disabled) {
+        transform: scale(0.98);
     }
 
-    .ai-input-container button:disabled {
-        opacity: 0.5;
+    .oracle-input button:disabled {
+        opacity: 0.6;
         cursor: not-allowed;
     }
 
-    .ai-footer {
+    .oracle-input button svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .ai-badge {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -540,57 +463,72 @@ const profileData = JSON.stringify(nicoProfile);
         color: var(--color-dark-grey);
     }
 
-    .pulse-dot {
+    .badge-dot {
         width: 8px;
         height: 8px;
-        background: #22c55e;
+        background: var(--color-primary);
         border-radius: 50%;
         animation: pulse-dot 2s ease-in-out infinite;
     }
 
     @keyframes pulse-dot {
-        0%, 100% { opacity: 1; transform: scale(1); }
-        50% { opacity: 0.5; transform: scale(0.8); }
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.4; }
     }
 
-    @media (prefers-reduced-motion: reduce) {
-        .brain-ring,
-        .brain-core,
-        .loader-dots span,
-        .loader-text,
-        .pulse-dot,
-        .ai-response,
-        .ai-assistant::before {
-            animation: none;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .ai-assistant {
-            padding: 1.5rem 1rem;
+    @media (max-width: 640px) {
+        .answer-card {
+            min-height: 220px;
+            padding: 1.5rem;
         }
 
-        .ai-brain {
-            width: 60px;
-            height: 60px;
+        .icon-wrapper {
+            width: 64px;
+            height: 64px;
         }
 
-        .brain-core {
-            inset: 10px;
+        .icon-wrapper svg {
+            width: 36px;
+            height: 36px;
         }
 
-        .brain-core svg {
-            width: 22px;
-            height: 22px;
-        }
-
-        .ai-response {
+        .answer-text {
             font-size: 0.95rem;
         }
 
-        .suggestion-chip {
-            padding: 0.4rem 0.8rem;
-            font-size: 0.8rem;
+        .quick-questions {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
+        }
+
+        .q-btn {
+            padding: 0.75rem;
+            gap: 0.35rem;
+        }
+
+        .q-icon {
+            font-size: 1.5rem;
+        }
+
+        .q-text {
+            font-size: 0.75rem;
+        }
+
+        .oracle-input button .btn-text {
+            display: none;
+        }
+
+        .oracle-input button {
+            padding: 0.75rem 1rem;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .card-glow,
+        .icon-wrapper,
+        .answer-card,
+        .badge-dot {
+            animation: none;
         }
     }
 </style>

@@ -4,16 +4,16 @@ import WelcomeCard from '../components/WelcomeCard.astro';
 
 const photos = [
     { src: "/profile_01.jpeg", alt: "Nico Gaitán - Retrato" },
-    { src: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&h=600&fit=crop&crop=face", alt: "Nico Gaitán - Trabajo" },
-    { src: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&h=600&fit=crop&crop=face", alt: "Nico Gaitán - Creativo" },
-    { src: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&h=600&fit=crop&crop=face", alt: "Nico Gaitán - Casual" },
+    { src: "/assets/images/photo_talk.png", alt: "Nico Gaitán - Creativo" },
+    { src: "/assets/images/photo_setup.jpeg", alt: "Nico Gaitán - Casual" },
+    { src: "/assets/images/photo_doodle.jpeg", alt: "Nico Gaitán - Trabajo" },
 ];
 ---
 
 <section id="inicio" class="hero">
     <Badget />
 
-    <WelcomeCard name='Nico Gaitán' description='Creativo digital con mentalidad de desarrollador. Transformo ideas en soluciones funcionales, medibles y con sentido.' />
+    <WelcomeCard name='Nico Gaitán' description='Creativo digital con visión técnica. Convierto ideas en experiencias digitales que funcionan, impactan y generan resultados.' />
 
     <div class="photo-slider">
         <div class="swiper" id="heroSwiper">
