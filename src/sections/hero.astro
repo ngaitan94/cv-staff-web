@@ -1,4 +1,5 @@
 ---
+import Badget from '../components/Badget.astro';
 import WelcomeCard from '../components/WelcomeCard.astro';
 
 const photos = [
@@ -11,6 +12,8 @@ const photos = [
 ---
 
 <section id="inicio" class="hero">
+    <Badget />
+
     <WelcomeCard name='Nico Gaitán' description='Creativo digital con visión técnica. Convierto ideas en experiencias digitales que funcionan, impactan y generan resultados.' />
 
     <div class="photo-slider">
