@@ -1,0 +1,222 @@
+---
+const clients = [
+    { name: "Movistar", logo: "/assets/images/logos/movistar.png" },
+    { name: "Peugeot", logo: "/assets/images/logos/peugeot.png" },
+    { name: "Mazda", logo: "/assets/images/logos/mazda.png" },
+    { name: "JAC", logo: "/assets/images/logos/jac.png" },
+    { name: "GWM", logo: "/assets/images/logos/gwm.png" },
+    { name: "Samsung", logo: "/assets/images/logos/samsung.png" },
+    { name: "Ford", logo: "/assets/images/logos/ford.png" },
+    { name: "IKEA", logo: "/assets/images/logos/ikea.png" },
+    { name: "Reebok", logo: "/assets/images/logos/reebok.png" },
+    { name: "Derco", logo: "/assets/images/logos/derco.png" },
+    { name: "GSK", logo: "/assets/images/logos/GSK.png" },
+    { name: "Ahumada", logo: "/assets/images/logos/ahumada.png" },
+    { name: "AutoPlanet", logo: "/assets/images/logos/autoplanet.png" },
+    { name: "Bupa", logo: "/assets/images/logos/bupa.png" },
+    { name: "Cruz Blanca", logo: "/assets/images/logos/cruz-blanca.png" },
+    { name: "Danone", logo: "/assets/images/logos/danone.png" },
+    { name: "Dolce Gusto", logo: "/assets/images/logos/dolcegusto.png" },
+    { name: "Integramédica", logo: "/assets/images/logos/integramedica.png" },
+    { name: "MetLife", logo: "/assets/images/logos/metlife.png" },
+    { name: "SMU", logo: "/assets/images/logos/smu.png" },
+    { name: "Softys", logo: "/assets/images/logos/softys.png" },
+];
+
+// Triple duplication for ultra-smooth seamless loop
+const allClients = [...clients, ...clients, ...clients];
+---
+
+<div class="clients-section">
+    <div class="clients-header">
+        <h3 class="clients-title">Clientes con los que he trabajado</h3>
+        <p class="clients-subtitle">Marcas que han confiado en mi experiencia</p>
+    </div>
+    
+    <div class="clients-marquee">
+        <div class="marquee-track">
+            {allClients.map((client) => (
+                <div class="client-logo">
+                    <img src={client.logo} alt={`Logo ${client.name}`} loading="lazy" />
+                </div>
+            ))}
+        </div>
+    </div>
+</div>
+
+<style>
+    .clients-section {
+        width: 100%;
+        max-width: 100vw;
+        overflow: hidden;
+        padding: 4rem 0;
+        background: linear-gradient(135deg, #fafafa 0%, #ffffff 100%);
+        border-top: 1px solid var(--color-light-grey);
+        border-bottom: 1px solid var(--color-light-grey);
+    }
+
+    .clients-header {
+        text-align: center;
+        max-width: 600px;
+        margin: 0 auto 3rem;
+        padding: 0 1.5rem;
+    }
+
+    .clients-title {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: var(--color-dark);
+        margin-bottom: 0.5rem;
+        line-height: 1.2;
+    }
+
+    .clients-subtitle {
+        font-size: 0.95rem;
+        color: var(--color-dark-grey);
+        line-height: 1.5;
+    }
+
+    .clients-marquee {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .clients-marquee::before,
+    .clients-marquee::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        width: 100px;
+        height: 100%;
+        z-index: 2;
+        pointer-events: none;
+    }
+
+    .clients-marquee::before {
+        left: 0;
+        background: linear-gradient(to right, #fafafa, transparent);
+    }
+
+    .clients-marquee::after {
+        right: 0;
+        background: linear-gradient(to left, #ffffff, transparent);
+    }
+
+    .marquee-track {
+        display: flex;
+        gap: 1.5rem;
+        animation: scroll 80s linear infinite;
+        width: fit-content;
+        will-change: transform;
+    }
+
+    .marquee-track:hover {
+        animation-play-state: paused;
+    }
+
+    @keyframes scroll {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(calc(-100% / 3));
+        }
+    }
+
+    .client-logo {
+        flex-shrink: 0;
+        width: 220px;
+        height: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        background: white;
+        border-radius: 1rem;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+    }
+
+    .client-logo:hover {
+        transform: translateY(-8px) scale(1.05);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+    }
+
+    .client-logo img {
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        transition: all 0.4s ease;
+    }
+
+    .client-logo:hover img {
+        filter: grayscale(0%) brightness(1) opacity(1);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .marquee-track {
+            animation: none;
+        }
+        
+        .marquee-track:hover {
+            animation: none;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .clients-section {
+            padding: 3rem 0;
+        }
+
+        .clients-header {
+            margin-bottom: 2rem;
+        }
+
+        .clients-title {
+            font-size: 1.5rem;
+        }
+
+        .clients-subtitle {
+            font-size: 0.9rem;
+        }
+
+        .marquee-track {
+            gap: 1.25rem;
+            animation-duration: 60s;
+        }
+
+        .client-logo {
+            width: 180px;
+            height: 100px;
+            padding: 0.875rem;
+        }
+
+        .clients-marquee::before,
+        .clients-marquee::after {
+            width: 50px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .clients-section {
+            padding: 2.5rem 0;
+        }
+
+        .clients-title {
+            font-size: 1.35rem;
+        }
+
+        .marquee-track {
+            animation-duration: 50s;
+        }
+
+        .client-logo {
+            width: 150px;
+            height: 85px;
+        }
+    }
+</style>
