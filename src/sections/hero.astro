@@ -3,9 +3,9 @@ import Badget from '../components/Badget.astro';
 import WelcomeCard from '../components/WelcomeCard.astro';
 
 const photos = [
-    { type: "image", src: "/profile_01.jpeg", alt: "Nico Gaitán - Retrato" },
     { type: "video", src: "/assets/videos/photo_video.mp4", alt: "Nico Gaitán - Video" },
     { type: "image", src: "/assets/images/photo_talk.png", alt: "Nico Gaitán - Creativo" },
+    { type: "image", src: "/profile_01.jpeg", alt: "Nico Gaitán - Retrato" },
     { type: "image", src: "/assets/images/photo_setup.jpeg", alt: "Nico Gaitán - Casual" },
     { type: "image", src: "/assets/images/photo_doodle.jpeg", alt: "Nico Gaitán - Trabajo" },
 ];
@@ -55,7 +55,7 @@ const photos = [
     </div>
 
     <div class="ctas">
-        <a href="#" class="btn" aria-label="Descargar currículum en PDF">
+        <a href="/assets/downloads/Nicolas-Gaitan-CV-2026.pdf" target="_blank" class="btn" aria-label="Descargar currículum en PDF" rel="noopener noreferrer">
             <svg
             xmlns="http://www.w3.org/2000/svg"
             width="40"
@@ -212,7 +212,7 @@ const photos = [
         justify-content: center;
         align-items: center;
         gap: .5rem;
-        padding: .5rem 1rem;
+        padding: .5rem .5rem;
         text-decoration: none;
         background-color: var(--color-light);
         color: var(--color-dark);
