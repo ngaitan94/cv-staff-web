@@ -9,7 +9,9 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/node": "^9.5.5",
     "@fontsource-variable/onest": "^5.2.8",
+    "@neondatabase/serverless": "^1.0.2",
     "astro": "^5.7.13",
     "gsap": "^3.14.2",
     "swiper": "^11.2.6"

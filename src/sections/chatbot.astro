@@ -229,6 +229,20 @@ const profileData = JSON.stringify(nicoProfile);
         }
     }
 
+    async function logQuery(query) {
+        try {
+            await fetch('/api/log-query', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ query: query })
+            });
+        } catch (error) {
+            console.error('Error logging query:', error);
+        }
+    }
+
     async function askQuestion(question) {
         if (isLoading) return;
         
@@ -249,6 +263,8 @@ const profileData = JSON.stringify(nicoProfile);
             showAnswer('🛡️ Solo puedo hablar sobre la experiencia y habilidades de Nico. ¿Tienes alguna pregunta sobre su trabajo, proyectos o cómo puede ayudarte?', true);
             return;
         }
+        
+        logQuery(question);
         
         conversationHistory.push({ role: 'user', content: question });
         setLoading(true);
