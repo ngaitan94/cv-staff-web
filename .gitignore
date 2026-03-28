@@ -13,9 +13,6 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-# chatbot query logs
-public/assets/logs/*.log
-
 # environment variables
 .env
 .env.production
