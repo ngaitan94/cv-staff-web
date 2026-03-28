@@ -50,32 +50,62 @@ DATABASE_URL=postgresql://usuario:password@ep-xxx.region.neon.tech/dbname?sslmod
 
 ## 🌐 Despliegue en Vercel
 
-### Paso 1: Configurar Variable de Entorno
+### Paso 1: Configurar Variables de Entorno
 
 1. Ve a tu proyecto en [Vercel Dashboard](https://vercel.com/dashboard)
 2. Settings → Environment Variables
-3. Agrega:
+3. Agrega las siguientes variables:
+
+   **DATABASE_URL**
    - **Name**: `DATABASE_URL`
    - **Value**: Tu connection string de Neon
-   - **Environment**: Production, Preview, Development (selecciona todos)
+   - **Environment**: Production, Preview, Development (todos)
+
+   **GROQ_API_KEY** (si aún no la tienes)
+   - **Name**: `PUBLIC_GROQ_API_KEY`
+   - **Value**: Tu API key de Groq
+   - **Environment**: Production, Preview, Development (todos)
+
 4. Guarda
 
-### Paso 2: Redeploy
+### Paso 2: Deploy
 
-1. Desde el dashboard de Vercel, haz clic en **Redeploy**
-2. O haz push a tu repositorio:
-   ```bash
-   git add .
-   git commit -m "Add Neon database for chatbot logs"
-   git push
-   ```
+**Opción A: Desde GitHub (Recomendado)**
+```bash
+git add .
+git commit -m "Add Neon database for chatbot logs"
+git push
+```
+Vercel detectará el push automáticamente y desplegará.
+
+**Opción B: Deploy manual**
+```bash
+npx vercel --prod
+```
 
 ### Paso 3: Inicializar Tabla en Producción
 
-Visita:
+Después del deploy, visita:
 ```
 https://tu-dominio.vercel.app/api/init-db
 ```
+
+Deberías ver:
+```json
+{
+  "success": true,
+  "message": "Database initialized successfully"
+}
+```
+
+### Paso 4: Verificar
+
+1. Visita tu sitio en producción
+2. Haz una pregunta al chatbot
+3. Verifica que se guardó:
+   ```
+   https://tu-dominio.vercel.app/api/get-logs
+   ```
 
 ---
 
